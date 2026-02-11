@@ -1,0 +1,21 @@
+name: Deploy to Cloudflare Workers
+
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 push될 때 실행
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Wrangler
+        run: npm install -g wrangler
+
+      - name: Publish to Cloudflare Workers
+        run: wrangler publish
+        env:
+          CF_API_TOKEN: ${{ 7lUsBjXL6pMCzaBb__k_GmH7BDfUvl_D2sn9E6mq }}
